@@ -1,0 +1,16 @@
+export default ({
+  'login': 'login',
+  'login.account': 'account',
+  'login.password': 'password',
+  'login.email': 'email',
+  'login.phone': 'phone',
+  'login.verify': 'code',
+  'login.register': 'register',
+  'login.submit': 'log in',
+  'login.title': 'login to system',
+  'login.hint.input': 'fill your ',
+  'login.hint.send': 'send ',
+  'login.hint.register': 'no account?',
+  'login.hint.forget': 'forget password?',
+  'login.remember': 'remember',
+})

@@ -1,5 +1,5 @@
 import { pwa } from './config/pwa'
-import { appDescription } from './constants/index'
+import { appDescription } from './config/site'
 
 export default defineNuxtConfig({
   modules: [
@@ -10,7 +10,26 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/ui',
     '@nuxt/content',
+    '@nuxt/image',
+    'nuxt-typed-router',
+    '@formkit/auto-animate',
+    '@nuxtjs/i18n',
   ],
+  i18n: {
+    locales: [
+      {
+        code: 'zh',
+        file: 'zh.js',
+      },
+      {
+        code: 'en',
+        file: 'en.js',
+      },
+    ],
+    lazy: true,
+    langDir: 'locales',
+    defaultLocale: 'zh',
+  },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -22,7 +41,7 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '@unocss/reset/tailwind.css',
+    // '@unocss/reset/tailwind.css',
   ],
 
   colorMode: {
@@ -30,6 +49,13 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    devProxy: {
+      '/api': {
+        target: 'http://47.104.180.148:8081/api', // 这里是接口地址
+        changeOrigin: true,
+        prependPath: true,
+      },
+    },
     esbuild: {
       options: {
         target: 'esnext',
@@ -47,7 +73,7 @@ export default defineNuxtConfig({
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
